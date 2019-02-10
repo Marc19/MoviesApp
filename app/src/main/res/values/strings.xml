@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="log_saved_movies">Log saved movies</string>
+</resources>

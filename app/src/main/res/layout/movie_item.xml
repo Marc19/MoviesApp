@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+    <ImageView
+            android:id="@+id/movie_image_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="8dp"
+            tools:background="@drawable/ic_launcher_foreground"/>
+
+    <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:layout_toEndOf="@id/movie_image_view"
+            tools:text="Lord of the rings"/>
+
+    <TextView
+            android:id="@+id/movie_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:maxLines="1"
+            android:layout_below="@id/movie_title"
+            android:layout_alignStart="@id/movie_title"
+            tools:text="7.3/10"/>
+
+    <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/movie_image_view"
+            android:layout_alignEnd="@+id/movie_title"
+            android:text="save"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/movie_image_view"
+            android:background="@android:color/darker_gray"/>
+
+</RelativeLayout>
