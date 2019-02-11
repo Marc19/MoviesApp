@@ -7,8 +7,10 @@ import android.util.Log
 import com.example.marciskander.moviesapp.R
 import com.example.marciskander.moviesapp.data_controller.DataController
 import com.example.marciskander.moviesapp.database.cupboard.MoviesDataSourceCupboard
+import com.example.marciskander.moviesapp.database.realm.MoviesDataSourceRealm
 //import com.example.marciskander.moviesapp.database.room.MovieDataSourceRoom
 import com.example.marciskander.moviesapp.database.sqlite.MoviesDataSourceSqlite
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Realm.init(this) // THIS SHOULD BE IN MOVIEAPPLICATION.KT BUT THERE IS AN ERROR THERE :(
         prepareViewSavedButton()
         prepareRecyclerView()
         makeRequest()
@@ -26,12 +29,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        //SQLITE
 //        MoviesDataSourceSqlite.getInstance(this).open()
+
+        //REALM
+        MoviesDataSourceRealm.open()
+
     }
 
     override fun onPause() {
         super.onPause()
+        //SQLITE
 //        MoviesDataSourceSqlite.getInstance(this).close()
+
+        //REALM
+        MoviesDataSourceRealm.close()
     }
 
     private fun prepareViewSavedButton() {
@@ -49,11 +61,13 @@ class MainActivity : AppCompatActivity() {
 //            })
 
             //USING CUPBOARD
-            val movieDataSourceCupboard : MoviesDataSourceCupboard = MoviesDataSourceCupboard(this)
-            val savedMovies = movieDataSourceCupboard.getMovies()
+//            val movieDataSourceCupboard : MoviesDataSourceCupboard = MoviesDataSourceCupboard(this)
+//            val savedMovies = movieDataSourceCupboard.getMovies()
+//            Log.d("HOLA", savedMovies.map{ movie -> movie.title }.toString())
+
+            //USING REALM
+            val savedMovies = MoviesDataSourceRealm.getMovies()
             Log.d("HOLA", savedMovies.map{ movie -> movie.title }.toString())
-
-
 
         }
     }

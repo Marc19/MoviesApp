@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.marciskander.moviesapp.R
 import com.example.marciskander.moviesapp.data_controller.DataController
 import com.example.marciskander.moviesapp.database.cupboard.MoviesDataSourceCupboard
+import com.example.marciskander.moviesapp.database.realm.MoviesDataSourceRealm
 import com.squareup.picasso.Picasso
 
 
@@ -53,8 +54,11 @@ class MyRecyclerViewAdapter(val dataController: DataController) : RecyclerView.A
 //            movieDataSourceRoom.insertMovie(dataController.movies[position])
 
             //USING CUPBOARD
-            val movieDataSourceCupboard : MoviesDataSourceCupboard = MoviesDataSourceCupboard(context)
-            movieDataSourceCupboard.insertMovie(dataController.movies[position])
+//            val movieDataSourceCupboard : MoviesDataSourceCupboard = MoviesDataSourceCupboard(context)
+//            movieDataSourceCupboard.insertMovie(dataController.movies[position])
+
+            //USING REALM
+            MoviesDataSourceRealm.insertMovie(dataController.movies[position])
         }
     }
 

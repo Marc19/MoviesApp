@@ -1,7 +1,8 @@
 package com.example.marciskander.moviesapp.data
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+
+import io.realm.RealmObject
+import java.util.*
 
 
 // THE MODEL WITHOUT CHANGES //
@@ -23,7 +24,22 @@ import android.arch.persistence.room.PrimaryKey
 
 // THE MODEL FOR CUPBOARD
 
-data class Movie(var _id:java.lang.Long, val vote_count: Int, val vote_average: Double, val title: String,
-                 val poster_path: String, val overview: String) {
+//data class Movie(var _id:java.lang.Long, val vote_count: Int, val vote_average: Double, val title: String,
+//                 val poster_path: String, val overview: String) {
+//
+//}
+
+// THE MODEL FOR REALM
+
+open class Movie(@io.realm.annotations.PrimaryKey var id:String? = UUID.randomUUID().toString(),
+                 var vote_count: Int? = null,
+                 var vote_average: Double? = null,
+                 var title: String? = null,
+                 var poster_path: String? = null,
+                 var overview: String? = null) : RealmObject(){
+
+    constructor() : this(null,null,null,null,null,null){
+
+    }
 
 }

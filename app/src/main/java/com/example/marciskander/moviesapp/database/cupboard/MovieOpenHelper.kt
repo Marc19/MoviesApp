@@ -4,6 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.marciskander.moviesapp.data.Movie
+import com.google.gson.Gson
+import nl.littlerobots.cupboard.tools.gson.GsonListFieldConverterFactory
 import nl.qbusict.cupboard.CupboardBuilder
 import nl.qbusict.cupboard.CupboardFactory.cupboard
 import nl.qbusict.cupboard.CupboardFactory.setCupboard
@@ -11,7 +13,8 @@ import nl.qbusict.cupboard.CupboardFactory.setCupboard
 class MovieOpenHelper(context: Context) : SQLiteOpenHelper(context, "mymovies.db", null, 1) {
 
     init {
-        setCupboard(CupboardBuilder().useAnnotations().build())
+        setCupboard(CupboardBuilder().registerFieldConverterFactory(GsonListFieldConverterFactory(Gson())).build())
+
         cupboard().register(Movie::class.java)
     }
 

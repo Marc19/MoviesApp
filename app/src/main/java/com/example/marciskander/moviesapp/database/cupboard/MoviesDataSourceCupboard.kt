@@ -41,7 +41,9 @@ class MoviesDataSourceCupboard (context: Context){
 
     //NOT WORKING
     fun getMovies(): List<Movie> {
-        val movies = cupboard().withDatabase(database).query<Movie>(Movie::class.java).list()
+//        val movies = cupboard().withDatabase(database).query<Movie>(Movie::class.java).list()
+
+        val movies = listOf<Movie>(cupboard().withDatabase(database).get(Movie::class.java, 1L))
         return movies
     }
 

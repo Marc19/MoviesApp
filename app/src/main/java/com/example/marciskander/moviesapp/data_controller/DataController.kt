@@ -31,7 +31,7 @@ class DataController {
         })
     }
 
-    fun getMovieTitleAtPosition(position: Int): String {
+    fun getMovieTitleAtPosition(position: Int): String? {
         return movies[position].title
     }
 
@@ -39,7 +39,7 @@ class DataController {
         return movies[position].vote_average.toString()
     }
 
-    fun getMovieImagePath(position: Int): String{
+    fun getMovieImagePath(position: Int): String?{
         return movies[position].poster_path
     }
 }
